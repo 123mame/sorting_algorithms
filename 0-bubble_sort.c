@@ -1,39 +1,32 @@
 #include "sort.h"
 
+
 /**
- * bubble_sort - compares adjacent elements and swaps them
- * @array: array
- * @size: size of the array
- * Return: Void
- */
+ * bubble_sort - bubble sort algorithm
+ * @array: pointer to array to sort
+ * @size: number of elements
+*/
 void bubble_sort(int *array, size_t size)
 {
-	int swap;
-	size_t i, j;
+size_t i, len = size;
+short int swapped;
+int tmp;
 
-	if (size < 2)
+do {
+	swapped = 0;
+	for (i = 1; i < size; i++)
 	{
-		return;
-	}
-
-
-	for (i = 0; i <= size; i++)
-	{
-		if (array[i + 1])
+		if (array[i - 1] > array[i])
 		{
-			for (j = 0; j <= size; j++)
-			{
-				if (array[j + 1])
-				{
-					if (array[j] > array[j + 1])
-					{
-						swap = array[j];
-						array[j] = array[j + 1];
-						array[j + 1] = swap;
-						print_array(array, size);
-					}
-				}
-			}
+			tmp = array[i];
+			array[i] = array[i - 1];
+			array[i - 1] = tmp;
+			swapped = i;
+			print_array(array, len);
 		}
 	}
+	size = swapped;
+} while (size >= 1);
+
 }
+
