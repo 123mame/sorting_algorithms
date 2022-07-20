@@ -1,6 +1,5 @@
 #include "sort.h"
 
-
 /**
  * bubble_sort - bubble sort algorithm
  * @array: pointer to array to sort
