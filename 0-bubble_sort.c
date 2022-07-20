@@ -1,49 +1,31 @@
-/*
- * File: 0-bubble_sort.c
- * Auth: Dagem Tsehay
- */
-
 #include "sort.h"
 
 /**
- * swap_ints - Swap two integers in the array.
- * @num1: The first integer to swap.
- * @num2: The second integer to swap.
- */
-void swap_ints(int *num1, int *num2)
-{
-	int tmp;
-
-	tmp = *num1;
-	*num1 = *num2;
-	*num2 = tmp;
-}
-
-/**
- * bubble_sort - Sort an array of integers in ascending order.
- * @array: An array of integers to sort.
- * @size: The size of the array.
+ * bubble_sort - sorts an array
+ * of integers. However, as it swaps
+ * an element, it also prints a
+ * representation of the array's current
+ * state.
+ * @array: array of integers to be sorted
+ * @size: size of the array
+ * Return: Always void
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, len = size;
-	bool bubbly = false;
+	unsigned int i, temp, flag = 1;
 
-	if (array == NULL || size < 2)
+	if (!array)
 		return;
 
-	while (bubbly == false)
-	{
-		bubbly = true;
-		for (i = 0; i < len - 1; i++)
+	while (flag == 1 && i != size)
+		for (i = 0, flag = 0; i < size - 1; i++)
 		{
+			/* Create a window comparing two ints */
 			if (array[i] > array[i + 1])
 			{
-				swap_ints(array + i, array + i + 1);
-				print_array(array, size);
-				bubbly = false;
+				/* If the current index > next index, swap the elements */
+				temp = array[i + 1], array[i + 1] = array[i], array[i] = temp;
+				print_array(array, size), flag = 1; /* Print the updated array */
 			}
 		}
-		len--;
-	}
 }
